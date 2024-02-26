@@ -9,12 +9,11 @@
   --bg-url: url(./assets/bg-mobile.jpg);
   --bg-button: rgba(255, 255, 255, 0.1);
   --border-button: rgba(255, 255, 255, 0.5);
-  --bg-button-hover: rgba(255, 255, 255, 0.02);
+  --bg-button-hover: rgba(255, 255, 255, 0.1);
   --sl-hover: rgba(255, 255, 255, 0.2);
   --switch-bg: url(./assets/moon-stars.svg);
   --bg-span: rgba(255, 255, 255, 0.1);
   --border-span: rgba(255, 255, 255, 0.5);
-  --switch-position: none;
 }
 
 .light {
@@ -22,10 +21,9 @@
   --bg-url: url(./assets/bg-mobile-light.jpg);
   --bg-button: rgba(0, 0, 0, 0.05);
   --border-button: rgba(0, 0, 0, 0.5);
-  --bg-button-hover: --bg-button-hover: rgba(0, 0, 0, 0.02);
+  --bg-button-hover: rgba(0, 0, 0, 0.1);
   --sl-hover: rgba(0, 0, 0, 0.2);
   --switch-bg: url(./assets/sun.svg);
-  --switch-position: 0;
   --bg-span: rgba(0, 0, 0, 0.1);
   --border-span: rgba(0, 0, 0, 0.5);
 }
@@ -79,8 +77,15 @@ body * {
   z-index: 1;
   top: 50%;
   transform: translateY(-50%);
-  right: var(--switch-position);
-  transition: right var(--switch-position) 5s;
+  animation: slide-out .2s;
+}
+
+#switch button:hover {
+  outline: 8px solid var(--bg-button-hover);
+}
+
+.light #switch button {
+  animation: slide-in .2s forwards;
 }
 
 #switch span{
@@ -167,4 +172,23 @@ footer {
    --bg-url: url(./assets/bg-desktop-light.jpg); 
   }
 
+}
+
+/* Keyframes */
+@keyframes slide-in {
+  from{
+    left: 0;
+  }
+  to{
+    left: 50%;
+  }
+}
+
+@keyframes slide-out {
+  from{
+    left: 50%;
+  }
+  to{
+    left: 0;
+  }
 }
